@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Quicksand:wght@300..700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-one: #fda2a8;
+  --color-two: #130202;
+  --color-three: #fffcf2;
+
+  --font-one: "Abril Fatface", serif;
+  --font-two: "Quicksand", sans-serif;
+}
