@@ -2,7 +2,7 @@ import "./Projects.css";
 
 function Projects() {
   return (
-    <main className="mainProjects">
+    <main className="mainProjects" id="projects">
       <h2>&lt;projets /&gt;</h2>
       <section className="sectionProjects">
         <article className="project">
@@ -16,7 +16,7 @@ function Projects() {
         <article className="project">
           <img
             src="/images/cookiePatron.png"
-            alt="Une capture d'écran d'un site internet de gestion d'arrosage de lantes d'intérieur"
+            alt="Une capture d'écran d'un site internet de gestion d'arrosage de plantes d'intérieur"
           />
           <h3>:plantodoro</h3>
           <p>2025</p>
@@ -39,9 +39,15 @@ function Projects() {
         </article>
       </section>
       <section className="navProjects">
-        <button type="button">[ accueil ]</button>
-        <button type="button">[ à propos ]</button>
-        <button type="button">[ contact ]</button>
+        <a href="#hero">
+          <button type="button">[ accueil ]</button>
+        </a>
+        <a href="#about">
+          <button type="button">[ à propos ]</button>
+        </a>
+        <a href="#contact">
+          <button type="button">[ contact ]</button>
+        </a>
       </section>
     </main>
   );
