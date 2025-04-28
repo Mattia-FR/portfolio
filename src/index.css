@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Quicksand:wght@300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Quattrocento:wght@400;700&display=swap");
 
 * {
   margin: 0;
@@ -11,6 +11,6 @@
   --color-two: #130202;
   --color-three: #fffcf2;
 
-  --font-one: "Abril Fatface", serif;
-  --font-two: "Quicksand", sans-serif;
+  --font-one: "Oswald", sans-serif;
+  --font-two: "Quattrocento", serif;
 }

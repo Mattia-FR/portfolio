@@ -1,0 +1,48 @@
+.mainProjects {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-two);
+  h2 {
+    color: var(--color-one);
+    font-family: var(--font-one);
+    font-size: 2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  .sectionProjects {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem auto 5rem auto;
+    gap: 2rem;
+    img {
+      max-width: 500px;
+      width: 50vw;
+    }
+    h3 {
+      color: var(--color-one);
+      font-family: var(--font-two);
+    }
+    p {
+      color: var(--color-three);
+      font-family: var(--font-two);
+    }
+  }
+  .navProjects {
+    display: flex;
+    justify-content: end;
+    margin-top: auto;
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+    gap: 0.5rem;
+    button {
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      color: var(--color-three);
+      font-family: var(--font-two);
+      font-size: 1rem;
+    }
+  }
+}
