@@ -5,6 +5,7 @@
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,16 +13,13 @@
 }
 
 .modal-content {
-  /* background-color: var(--color-one); */
-  background: rgba(253, 162, 168, 0.2);
+  background-color: var(--color-one);
   padding: 2rem;
   border-radius: 15px;
   max-width: 90%;
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
-  /* border: 1px solid var(--color-three); */
-  backdrop-filter: blur(10px);
 }
 
 .modal-close {
