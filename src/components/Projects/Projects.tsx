@@ -1,8 +1,10 @@
 import "./Projects.css";
 import ProjectCard from "../ProjectCard/ProjectCard";
+import type { Project } from "../../types/Project";
+import type { JSX } from "react";
 
-function Projects() {
-  const projects = [
+function Projects(): JSX.Element {
+  const projects: Project[] = [
     {
       id: 1,
       title: "/ le cookie du patron /",
@@ -10,6 +12,14 @@ function Projects() {
       description:
         "Une capture d'écran d'un site internet de vente de cookies en ligne",
       year: 2025,
+      stack: ["React", "Node.js", "Express", "MySQL", "Stripe API"],
+      features: [
+        "Catalogue de produits avec système de filtrage",
+        "Panier d'achat avec persistance",
+        "Système de paiement sécurisé via Stripe",
+        "Authentification utilisateur",
+        "Interface d'administration pour la gestion des produits",
+      ],
     },
     {
       id: 2,
@@ -18,6 +28,12 @@ function Projects() {
       description:
         "Une capture d'écran d'un site internet de gestion d'arrosage de plantes d'intérieur",
       year: 2025,
+      stack: ["React", "Node.js", "Express", "MySQL"],
+      features: [
+        "Suivi d'arrosage de plantes avec notifications",
+        "Base de données de plantes avec conseils d'entretien",
+        "Mode hors ligne avec synchronisation",
+      ],
     },
     {
       id: 3,
@@ -25,6 +41,8 @@ function Projects() {
       image: "/images/konohArchives.png",
       description: "Une capture d'écran d'un site internet sur Naruto",
       year: 2025,
+      stack: ["React", "Node.js", "Express", "MySQL"],
+      features: ["Encyclopédie complète des personnages de Naruto"],
     },
     {
       id: 4,
@@ -33,6 +51,12 @@ function Projects() {
       description:
         "Une capture d'écran d'une application mobile Tamagochi-like",
       year: 2025,
+      stack: ["React Native"],
+      features: [
+        "Créature virtuelle avec animation 2D",
+        "Système de jauges",
+        "Notifications push",
+      ],
     },
   ];
 
@@ -41,13 +65,7 @@ function Projects() {
       <h2>&lt;projets /&gt;</h2>
       <section className="sectionProjects">
         {projects.map((project) => (
-          <ProjectCard
-            key={project.id}
-            title={project.title}
-            image={project.image}
-            description={project.description}
-            year={project.year}
-          />
+          <ProjectCard key={project.id} {...project} />
         ))}
       </section>
       <section className="navProjects">

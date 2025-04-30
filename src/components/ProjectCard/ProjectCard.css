@@ -1,4 +1,4 @@
-.project {
+.projectCard {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -9,14 +9,6 @@
     border-radius: 50%;
     outline: 5px solid var(--color-one);
     outline-offset: -5px;
-  }
-  hr {
-    border: 0;
-    border-top: 2px dashed;
-    height: 2px;
-    width: 70vw;
-    border-radius: 5px;
-    background: linear-gradient(to right, var(--color-one), var(--color-three));
   }
   h3 {
     color: var(--color-one);
