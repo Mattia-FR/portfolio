@@ -6,6 +6,7 @@ import type { Project } from "../../types/Project";
 type ProjectCardProps = Project;
 
 function ProjectCard({
+  id,
   title,
   image,
   description,
@@ -41,11 +42,10 @@ function ProjectCard({
         <div className="project-modal">
           <h3>{title}</h3>
           <div>
-            <p className="projectCardYear">{year}</p>
             {stack && stack.length > 0 && (
               <div className="project-modal-stack">
-                {stack.map((tech, index) => (
-                  <span key={index}>{tech}</span>
+                {stack.map((tech) => (
+                  <span key={`project-${id}-stack-${tech}`}>{tech}</span>
                 ))}
               </div>
             )}
@@ -54,8 +54,8 @@ function ProjectCard({
             <div className="project-modal-features">
               <h4>Fonctionnalités principales:</h4>
               <ul>
-                {features.map((feature, index) => (
-                  <li key={index}>{feature}</li>
+                {features.map((feature) => (
+                  <li key={`project-${id}-feature-${feature}`}>{feature}</li>
                 ))}
               </ul>
             </div>
