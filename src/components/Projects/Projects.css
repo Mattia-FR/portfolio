@@ -1,7 +1,7 @@
 .mainProjects {
   display: flex;
   flex-direction: column;
-  background-color: var(--color-two);
+  background-color: var(--color-one);
   h2 {
     color: var(--color-one);
     font-family: var(--font-one);

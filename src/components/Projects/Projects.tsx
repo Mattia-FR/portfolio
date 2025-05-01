@@ -1,9 +1,46 @@
+import { useEffect, useRef } from "react";
 import "./Projects.css";
 import ProjectCard from "../ProjectCard/ProjectCard";
 import type { Project } from "../../types/Project";
 import type { JSX } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function Projects(): JSX.Element {
+  const projectsSectionRef = useRef(null);
+
+  useEffect(() => {
+    if (!projectsSectionRef.current) return;
+
+    const computedStyle = getComputedStyle(document.documentElement);
+    const colorOne = computedStyle.getPropertyValue("--color-one").trim();
+    const colorTwo = computedStyle.getPropertyValue("--color-two").trim();
+
+    gsap.fromTo(
+      projectsSectionRef.current,
+      {
+        backgroundColor: colorOne,
+      },
+      {
+        backgroundColor: colorTwo,
+        immediateRender: false,
+        scrollTrigger: {
+          trigger: projectsSectionRef.current,
+          start: "top 75%", // Commence quand le haut de la section atteint le bas de la fenêtre
+          end: "top top", // Termine quand le haut de la section atteint le haut de la fenêtre
+          scrub: true, // Animation liée au défilement (smooth)
+          // markers: true, // Pour le débogage - à désactiver en production
+        },
+      },
+    );
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
   const projects: Project[] = [
     {
       id: 1,
@@ -61,7 +98,7 @@ function Projects(): JSX.Element {
   ];
 
   return (
-    <main className="mainProjects" id="projects">
+    <main className="mainProjects" id="projects" ref={projectsSectionRef}>
       <h2>&lt;projets /&gt;</h2>
       <section className="sectionProjects">
         {projects.map((project) => (
