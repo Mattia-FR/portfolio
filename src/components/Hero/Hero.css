@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   background-color: var(--color-one);
-  height: 100vh;
+  height: 100dvh;
   h1 {
     color: var(--color-two);
     font-family: var(--font-one);
