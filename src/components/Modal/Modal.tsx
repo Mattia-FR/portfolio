@@ -1,6 +1,7 @@
-import { useEffect, useRef, type ReactNode } from "react";
+import { useRef, useEffect, type ReactNode } from "react";
 import "./Modal.css";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 interface ModalProps {
   isOpen: boolean;
@@ -12,6 +13,7 @@ function Modal({ isOpen, onClose, children }: ModalProps) {
   const modalOverlayRef = useRef<HTMLDivElement>(null);
   const modalContentRef = useRef<HTMLDivElement>(null);
 
+  // Gestion de la touche Escape pour fermer la modal
   useEffect(() => {
     const handleEscapeKey = (e: KeyboardEvent): void => {
       if (e.key === "Escape" && isOpen) {
@@ -25,6 +27,7 @@ function Modal({ isOpen, onClose, children }: ModalProps) {
     };
   }, [isOpen, onClose]);
 
+  // Désactivation du scroll du body quand la modal est ouverte
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -36,36 +39,40 @@ function Modal({ isOpen, onClose, children }: ModalProps) {
     };
   }, [isOpen]);
 
-  useEffect(() => {
-    if (isOpen && modalOverlayRef.current && modalContentRef.current) {
-      gsap.set(modalOverlayRef.current, { opacity: 0 });
-      gsap.set(modalContentRef.current, {
-        opacity: 0,
-        scale: 0.8,
-        y: 20,
-      });
+  // Animation d'ouverture de la modal avec useGSAP
+  useGSAP(
+    () => {
+      if (isOpen && modalOverlayRef.current && modalContentRef.current) {
+        gsap.set(modalOverlayRef.current, { opacity: 0 });
+        gsap.set(modalContentRef.current, {
+          opacity: 0,
+          scale: 0.8,
+          y: 20,
+        });
 
-      const tl = gsap.timeline();
+        const tl = gsap.timeline();
 
-      tl.to(modalOverlayRef.current, {
-        opacity: 1,
-        duration: 0.3,
-        ease: "power2.out",
-      });
-
-      tl.to(
-        modalContentRef.current,
-        {
+        tl.to(modalOverlayRef.current, {
           opacity: 1,
-          scale: 1,
-          y: 0,
-          duration: 0.5,
-          ease: "back.out(1.7)",
-        },
-        "-=0.1",
-      );
-    }
-  }, [isOpen]);
+          duration: 0.3,
+          ease: "power2.out",
+        });
+
+        tl.to(
+          modalContentRef.current,
+          {
+            opacity: 1,
+            scale: 1,
+            y: 0,
+            duration: 0.5,
+            ease: "back.out(1.7)",
+          },
+          "-=0.1",
+        );
+      }
+    },
+    { dependencies: [isOpen] },
+  ); // On ne dépend que de isOpen pour refaire l'animation
 
   if (!isOpen) return null;
 
