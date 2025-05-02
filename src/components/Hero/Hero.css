@@ -36,3 +36,16 @@
     font-size: 1rem;
   }
 }
+
+/* Modifier le Hero pour le positionnement relatif */
+.mainHero {
+  position: relative;
+}
+
+/* S'assurer que le contenu du Hero est au-dessus du canvas */
+.mainHero h1,
+.mainHero h2,
+.mainHero .navHero {
+  position: relative;
+  z-index: 2;
+}
