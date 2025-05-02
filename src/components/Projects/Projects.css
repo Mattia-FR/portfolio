@@ -3,7 +3,7 @@
   flex-direction: column;
   background-color: var(--color-one);
   h2 {
-    color: var(--color-one);
+    color: var(--color-three);
     font-family: var(--font-one);
     font-size: 2rem;
     margin-top: 0.5rem;
