@@ -1,4 +1,6 @@
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import "./AnimatedBackground.css";
 
 type CodeElement = {
@@ -10,170 +12,161 @@ type CodeElement = {
   speed: number;
 };
 
+const CODE_WORDS: string[] = [
+  ".then()",
+  ".catch()",
+  ".finally()",
+  ".map()",
+  ".filter()",
+  ".reduce()",
+  ".push()",
+  ".pop()",
+  ".slice()",
+  ".splice()",
+  "<div>",
+  "</div>",
+  "<span>",
+  "</span>",
+  "<p>",
+  "</p>",
+  "<h1>",
+  "</h1>",
+  "<ul>",
+  "</ul>",
+  "<li>",
+  "</li>",
+  "<a>",
+  "</a>",
+  "<input/>",
+  "<img/>",
+  "<br/>",
+  "<hr/>",
+  "=>",
+  "...",
+  "++",
+  "--",
+  "+=",
+  "-=",
+  "*=",
+  "/=",
+  "===",
+  "!==",
+  "&&",
+  "||",
+  "?.",
+  "??",
+  "()",
+  "[]",
+  "{}",
+  "${}",
+  "#{}",
+  "/* */",
+  "//",
+  "/** */",
+  "`${}`",
+  "...rest",
+  "...spread",
+  "()=>{}",
+  "function(){}",
+  "class{}",
+  "try{}",
+  "catch{}",
+  "finally{}",
+  "if(){}",
+  "else{}",
+  "for(){}",
+  "while(){}",
+  "switch(){}",
+  "case:",
+  "default:",
+  "import{}",
+  "export{}",
+  "`string`",
+  "/regex/",
+];
+
 function AnimatedBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const codeElements = useRef<CodeElement[]>([]);
-  const rafId = useRef<number>(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  // Liste de mots liés à JavaScript et HTML
-  const codeWords = [
-    ".then()",
-    ".catch()",
-    ".finally()",
-    ".map()",
-    ".filter()",
-    ".reduce()",
-    ".push()",
-    ".pop()",
-    ".slice()",
-    ".splice()",
-    "<div>",
-    "</div>",
-    "<span>",
-    "</span>",
-    "<p>",
-    "</p>",
-    "<h1>",
-    "</h1>",
-    "<ul>",
-    "</ul>",
-    "<li>",
-    "</li>",
-    "<a>",
-    "</a>",
-    "<input/>",
-    "<img/>",
-    "<br/>",
-    "<hr/>",
-    "=>",
-    "...",
-    "++",
-    "--",
-    "+=",
-    "-=",
-    "*=",
-    "/=",
-    "===",
-    "!==",
-    "&&",
-    "||",
-    "?.",
-    "??",
-    "()",
-    "[]",
-    "{}",
-    "${}",
-    "#{}",
-    "/* */",
-    "//",
-    "/** */",
-    "`${}`",
-    "...rest",
-    "...spread",
-    "()=>{}",
-    "function(){}",
-    "class{}",
-    "try{}",
-    "catch{}",
-    "finally{}",
-    "if(){}",
-    "else{}",
-    "for(){}",
-    "while(){}",
-    "switch(){}",
-    "case:",
-    "default:",
-    "import{}",
-    "export{}",
-    "`string`",
-    "/regex/",
-  ];
+  useGSAP(
+    () => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
 
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+      const init = () => {
+        if (!canvas.parentElement) return;
 
-    // Ajuster la taille du canvas
-    const resizeCanvas = () => {
-      if (canvas?.parentElement) {
         canvas.width = canvas.parentElement.clientWidth;
         canvas.height = canvas.parentElement.clientHeight;
-        initElements(); // Réinitialiser les éléments après redimensionnement
-      }
-    };
 
-    // Initialiser les éléments de code
-    const initElements = () => {
-      codeElements.current = [];
-      // Ajusté pour avoir moins de mots (car ils sont plus grands que des caractères)
-      const elementCount = Math.min(Math.floor(canvas.width / 20), 60);
+        codeElements.current = Array.from(
+          { length: Math.min(Math.floor(canvas.width / 20), 60) },
+          () => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            word: CODE_WORDS[Math.floor(Math.random() * CODE_WORDS.length)],
+            size: Math.random() * 6 + 8,
+            opacity: Math.random() * 0.3 + 0.1,
+            speed: Math.random() * 0.8 + 0.4,
+          }),
+        );
 
-      for (let i = 0; i < elementCount; i++) {
-        codeElements.current.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          word: codeWords[Math.floor(Math.random() * codeWords.length)],
-          size: Math.random() * 6 + 8, // Taille légèrement réduite pour les mots
-          opacity: Math.random() * 0.3 + 0.1,
-          speed: Math.random() * 0.8 + 0.4, // Vitesse comme demandé précédemment
-        });
-      }
-    };
+        gsap.ticker.add(animateElements);
+      };
 
-    // Dessiner et animer les éléments
-    const drawElements = () => {
-      if (!ctx || !canvas) return;
+      const animateElements = () => {
+        if (!ctx || !canvas) return;
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      for (let i = 0; i < codeElements.current.length; i++) {
-        const el = codeElements.current[i];
+        for (const el of codeElements.current) {
+          el.y += el.speed;
+          ctx.font = `${el.size}px monospace`;
+          const wordWidth = ctx.measureText(el.word).width;
 
-        // Déplacement vertical
-        el.y += el.speed;
+          if (el.y > canvas.height) {
+            el.y = -30;
+            el.x = Math.random() * (canvas.width - wordWidth);
+            el.word = CODE_WORDS[Math.floor(Math.random() * CODE_WORDS.length)];
+          }
 
-        // Mesurer la largeur du mot pour éviter qu'il ne commence hors de l'écran
-        ctx.font = `${el.size}px monospace`;
-        const wordWidth = ctx.measureText(el.word).width;
-
-        // Réinitialiser quand l'élément sort de l'écran
-        if (el.y > canvas.height) {
-          el.y = -30;
-          // S'assurer que le mot est entièrement visible horizontalement
-          el.x = Math.random() * (canvas.width - wordWidth);
-          el.word = codeWords[Math.floor(Math.random() * codeWords.length)];
+          ctx.fillStyle = "var(--color-two)";
+          ctx.globalAlpha = el.opacity;
+          ctx.fillText(el.word, el.x, el.y);
         }
 
-        // Dessiner le mot
-        ctx.fillStyle = "var(--color-two)";
-        ctx.globalAlpha = el.opacity;
-        ctx.fillText(el.word, el.x, el.y);
+        ctx.globalAlpha = 1;
+      };
+
+      const onResize = () => {
+        gsap.delayedCall(0.2, init);
+      };
+
+      const resizeObserver = new ResizeObserver(onResize);
+      if (canvas.parentElement) {
+        resizeObserver.observe(canvas.parentElement);
       }
 
-      ctx.globalAlpha = 1;
-      rafId.current = requestAnimationFrame(drawElements);
-    };
+      init();
 
-    // Mettre en place l'animation
-    window.addEventListener("resize", resizeCanvas);
+      return () => {
+        resizeObserver.disconnect();
+        gsap.ticker.remove(animateElements);
+      };
+    },
+    { scope: containerRef },
+  );
 
-    resizeCanvas();
-    initElements();
-    rafId.current = requestAnimationFrame(drawElements);
-
-    // Nettoyage
-    return () => {
-      window.removeEventListener("resize", resizeCanvas);
-      if (rafId.current) {
-        cancelAnimationFrame(rafId.current);
-      }
-    };
-  }, []);
-
-  return <canvas ref={canvasRef} className="animated-background" />;
+  return (
+    <div ref={containerRef} className="animated-background-container">
+      <canvas ref={canvasRef} className="animated-background" />
+    </div>
+  );
 }
 
 export default AnimatedBackground;
