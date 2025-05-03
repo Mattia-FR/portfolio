@@ -14,6 +14,27 @@ function Contact() {
 
   useGSAP(
     () => {
+      if (!contactSectionRef.current) return;
+
+      const computedStyle = getComputedStyle(document.documentElement);
+      const colorOne = computedStyle.getPropertyValue("--color-three").trim();
+      const colorTwo = computedStyle.getPropertyValue("--color-one").trim();
+
+      gsap.fromTo(
+        contactSectionRef.current,
+        { backgroundColor: colorOne },
+        {
+          backgroundColor: colorTwo,
+          immediateRender: false,
+          scrollTrigger: {
+            trigger: contactSectionRef.current,
+            start: "top 90%",
+            end: "top 50%",
+            scrub: true,
+          },
+        },
+      );
+
       if (!protonmailRef.current || !linkedinRef.current || !githubRef.current)
         return;
 
@@ -24,21 +45,22 @@ function Contact() {
       ];
 
       gsap.set(iconElements, { opacity: 0, y: 30 });
-      const tl = gsap.timeline({ paused: true });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: contactSectionRef.current,
+          start: "top 70%",
+          end: "top 30%",
+          toggleActions: "play none none reverse",
+        },
+      });
 
       tl.to(iconElements, {
         opacity: 1,
         y: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "back.out(1.7)",
-      });
-
-      ScrollTrigger.create({
-        trigger: contactSectionRef.current,
-        start: "top 60%",
-        onEnter: () => tl.play(),
-        // markers: true // Pour le débogage - à désactiver en production
+        duration: 0.6,
+        stagger: 0.15,
+        ease: "back.out(1.4)",
       });
     },
     { scope: contactSectionRef },

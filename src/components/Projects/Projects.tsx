@@ -30,10 +30,9 @@ function Projects(): JSX.Element {
           immediateRender: false,
           scrollTrigger: {
             trigger: projectsSectionRef.current,
-            start: "top 75%", // Commence quand le haut de la section atteint le bas de la fenêtre
-            end: "top top", // Termine quand le haut de la section atteint le haut de la fenêtre
-            scrub: true, // Animation liée au défilement (smooth)
-            // markers: true, // Pour le débogage - à désactiver en production
+            start: "top 75%",
+            end: "top top",
+            scrub: true,
           },
         },
       );

@@ -13,7 +13,6 @@ function Modal({ isOpen, onClose, children }: ModalProps) {
   const modalOverlayRef = useRef<HTMLDivElement>(null);
   const modalContentRef = useRef<HTMLDivElement>(null);
 
-  // Gestion de la touche Escape pour fermer la modal
   useEffect(() => {
     const handleEscapeKey = (e: KeyboardEvent): void => {
       if (e.key === "Escape" && isOpen) {
@@ -27,7 +26,6 @@ function Modal({ isOpen, onClose, children }: ModalProps) {
     };
   }, [isOpen, onClose]);
 
-  // Désactivation du scroll du body quand la modal est ouverte
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -39,7 +37,6 @@ function Modal({ isOpen, onClose, children }: ModalProps) {
     };
   }, [isOpen]);
 
-  // Animation d'ouverture de la modal avec useGSAP
   useGSAP(
     () => {
       if (isOpen && modalOverlayRef.current && modalContentRef.current) {
@@ -72,7 +69,7 @@ function Modal({ isOpen, onClose, children }: ModalProps) {
       }
     },
     { dependencies: [isOpen] },
-  ); // On ne dépend que de isOpen pour refaire l'animation
+  );
 
   if (!isOpen) return null;
 

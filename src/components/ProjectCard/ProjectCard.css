@@ -5,6 +5,11 @@
   aspect-ratio: 1;
   border-radius: 15px;
   overflow: hidden;
+  border: solid 1px var(--color-three);
+  &:active {
+    transform: scale(0.96);
+    transition: transform 0.05s;
+  }
   img {
     width: 100%;
     height: 50%;
@@ -18,7 +23,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: var(--color-three);
+    background-color: var(--color-two);
+    border-top: solid 1px var(--color-three);
   }
   h3 {
     color: var(--color-one);
