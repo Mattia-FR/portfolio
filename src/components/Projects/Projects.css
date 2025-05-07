@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   background-color: var(--color-one);
+  min-height: 100dvh;
   h2 {
     color: var(--color-three);
     font-family: var(--font-one);
@@ -15,6 +16,13 @@
     flex-direction: column;
     gap: 3rem;
     margin: 2rem auto 5rem auto;
+  }
+  @media (min-width: 1200px) {
+    .sectionProjects {
+      display: flex;
+      flex-direction: row;
+      margin: auto;
+    }
   }
   .navProjects {
     display: flex;

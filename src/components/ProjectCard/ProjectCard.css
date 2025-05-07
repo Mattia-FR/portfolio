@@ -40,6 +40,19 @@
   }
 }
 
+@media (min-width: 1200px) {
+  .projectCard {
+    width: 20vw;
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 0 15px 1px var(--color-three);
+      transform: scale(1.04);
+      transition: transform 0.05s;
+    }
+  }
+}
+
 /* Styles de modal pour les projets */
 .project-modal {
   display: flex;
