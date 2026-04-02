@@ -1,82 +1,66 @@
-# Template React + TypeScript + Vite + Biome
+# Portfolio - Mattia Bouvier
 
-Un template personnel minimaliste pour démarrer rapidement des projets React avec une configuration propre et moderne.
+Application portfolio personnelle construite avec React, TypeScript et Vite.
+Le projet est en cours de construction et sert de vitrine pour mon profil, mes projets et mes moyens de contact.
 
-## 🚀 Démarrage rapide
+## Objectif du projet
+
+Ce portfolio a pour but de présenter :
+- mon profil de developpeur web en reconversion ;
+- mes projets realises ou en cours ;
+- une facon simple de me contacter.
+
+## Stack technique
+
+- `React 19`
+- `TypeScript`
+- `Vite`
+- `React Router`
+- `Biome` (lint + format)
+
+## Fonctionnalites actuelles
+
+- Layout global avec `Header`, zone principale (`Outlet`) et `Footer`
+- Navigation via une `Navbar`
+- Routage client avec 3 pages :
+  - `/` : accueil (presentation)
+  - `/projects` : projets (placeholder pour le moment)
+  - `/contact` : contact (placeholder pour le moment)
+
+## Démarrage local
 
 ```bash
-# Cloner le template
-git clone https://github.com/Mattia-FR/template nom-du-projet
-cd nom-du-projet
-
-# Nettoyer l'historique git et réinitialiser
-rm -rf .git
-git init
-
-# Mettre à jour le nom du projet
-npm pkg set name="nom-du-projet"
-
-# Installer les dépendances
 npm install
-
-# Lancer le serveur de développement
 npm run dev
 ```
 
-## 🛠️ Stack technique
+Puis ouvrir l'URL affichee dans le terminal (par defaut : `http://localhost:5173`).
 
-- **React** - Bibliothèque UI
-- **TypeScript** - Typage statique
-- **Vite** - Build tool et dev server
-- **Biome** - Linter et formatter (remplace ESLint + Prettier)
-
-## 📝 Scripts disponibles
+## Scripts disponibles
 
 ```bash
-npm run dev      # Serveur de développement
-npm run build    # Build de production
-npm run preview  # Preview du build
-npm run check    # Vérification du code (lecture seule)
-npm run format   # Formatage automatique
-npm run lint     # Linting + formatage + corrections
+npm run dev      # Lance le serveur de developpement
+npm run build    # Build de production (TypeScript + Vite)
+npm run preview  # Lance une preview du build
+npm run check    # Verification du code avec Biome (lecture seule)
+npm run format   # Formatage automatique des fichiers dans src
+npm run lint     # Verification + corrections automatiques dans src
 ```
 
-## 📁 Structure du projet
+## Structure actuelle (simplifiee)
 
-```
+```text
 src/
-├── App.tsx      # Composant principal (minimaliste)
-├── App.css      # Styles du composant App
-├── main.tsx     # Point d'entrée avec gestion d'erreur
-└── index.css    # Reset CSS minimal
+├── main.tsx
+├── App.tsx
+└── components/
+    ├── molecules/
+    │   └── Navbar.tsx
+    ├── organisms/
+    │   ├── Header.tsx
+    │   └── Footer.tsx
+    └── pages/
+        ├── HomePage.tsx
+        ├── ProjectsPage.tsx
+        └── ContactPage.tsx
 ```
-
-## ⚙️ Configuration
-
-### Biome
-Configuration dans `biome.json` :
-- Formatage avec espaces et guillemets doubles
-- Règles recommandées activées
-- Organisation automatique des imports
-
-### TypeScript
-Configuration standard avec `tsconfig.json` pour Vite.
-
-## 🎯 Philosophie du template
-
-- **Minimaliste** - Juste l'essentiel pour commencer
-- **Moderne** - Outils récents et bonnes pratiques
-- **Propre** - Pas de CSS de démo, structure claire
-- **Évolutif** - Base solide pour grandir
-
-## 📚 Prochaines étapes suggérées
-
-Selon vos besoins, vous pouvez ajouter :
-- **State management** - Zustand, Redux Toolkit
-- **UI Library** - Tailwind CSS, Material-UI
-- **Testing** - Vitest, React Testing Library
-- **API calls** - Axios, React Query
-
----
-
-*Template créé pour mes projets personnels - Libre d'utilisation si ça peut servir !*

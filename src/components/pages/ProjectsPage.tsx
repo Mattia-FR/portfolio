@@ -27,7 +27,9 @@ function ProjectsPage() {
         {selectedProject && (
           <div className="projects-page__modal-content">
             <h2 className="projects-page__modal-title">
+              {"< "}
               {selectedProject.title}
+              {" >"}
             </h2>
             <p className="projects-page__modal-description">
               {selectedProject.description}

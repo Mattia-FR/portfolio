@@ -20,7 +20,7 @@
     .project-card {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 1rem;
       background-color: var(--color-one);
       color: var(--color-two);
       border: 1px solid var(--color-two);
@@ -41,6 +41,7 @@
       .project-card__stack {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         gap: 0.5rem;
         font-size: 0.8rem;
         font-style: italic;
@@ -68,11 +69,38 @@
   .projects-page__modal-content {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 2rem;
     background-color: var(--color-one);
     max-width: 90vw;
     border-radius: 8px;
-    padding: 1rem;
+    padding: 2rem 1rem;
+
+    .projects-page__modal-title {
+      color: var(--color-three);
+      font-family: var(--font-two);
+    }
+
+    .projects-page__modal-highlights,
+    .projects-page__modal-stack {
+      font-size: 0.9rem;
+    }
+
+    .projects-page__modal-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      list-style: inside;
+    }
+
+    .projects-page__modal-stack {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding-bottom: 0.5rem;
+      list-style: none;
+      font-style: italic;
+    }
 
     .projects-page__modal-links {
       a {
