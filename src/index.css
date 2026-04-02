@@ -1,4 +1,29 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
   margin: 0;
-  font-family: system-ui, sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-one: #171b20;
+  --color-two: #fffdf0;
+  --color-three: #ff6c70;
+  --color-four: #262c35;
+  --font-one: "Work Sans", sans-serif;
+  --font-two: "JetBrains Mono", monospace;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-one);
+  font-family: var(--font-one);
+  color: var(--color-two);
 }
