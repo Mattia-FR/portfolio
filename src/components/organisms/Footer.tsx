@@ -1,8 +1,10 @@
+import "./Footer.css";
+
 function Footer() {
   return (
-    <div>
-      <h2>Footer</h2>
-    </div>
+    <footer className="footer">
+      <p className="footer__text">Codé avec les pieds, amour et React.</p>
+    </footer>
   );
 }
 

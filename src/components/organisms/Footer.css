@@ -1,0 +1,10 @@
+.footer {
+  padding: 1rem 0.5rem;
+
+  p {
+    font-family: var(--font-two);
+    text-align: center;
+    font-size: 0.8rem;
+    font-style: italic;
+  }
+}

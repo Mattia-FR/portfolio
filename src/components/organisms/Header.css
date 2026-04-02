@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 1rem 0.5rem;
+
+  .navbar {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+
+    a {
+      text-decoration: none;
+      color: var(--color-two);
+      font-family: var(--font-two);
+    }
+
+    a.active {
+      color: var(--color-three);
+    }
+  }
+}

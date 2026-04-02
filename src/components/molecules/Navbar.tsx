@@ -3,9 +3,31 @@ import { NavLink } from "react-router-dom";
 function Navbar() {
   return (
     <nav className="navbar">
-      <NavLink to="/">Accueil</NavLink>
-      <NavLink to="/projects">Projets</NavLink>
-      <NavLink to="/contact">Contact</NavLink>
+      <NavLink
+        to="/"
+        end
+        className={({ isActive }) =>
+          isActive ? "nav-link active" : "nav-link"
+        }
+      >
+        Accueil
+      </NavLink>
+      <NavLink
+        to="/projects"
+        className={({ isActive }) =>
+          isActive ? "nav-link active" : "nav-link"
+        }
+      >
+        Projets
+      </NavLink>
+      <NavLink
+        to="/contact"
+        className={({ isActive }) =>
+          isActive ? "nav-link active" : "nav-link"
+        }
+      >
+        Contact
+      </NavLink>
     </nav>
   );
 }
