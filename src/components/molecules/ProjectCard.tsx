@@ -17,6 +17,7 @@ function ProjectCard({ project, onClick }: ProjectCardProps) {
         {project.title}
         {" >"}
       </h2>
+      <img src={project.thumbnail} alt={project.title} className="project-card__thumbnail" />
       <p className="project-card__description">{project.description}</p>
       <div className="project-card__stack">
         {project.stack.map((technology) => (

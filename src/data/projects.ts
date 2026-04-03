@@ -54,7 +54,7 @@ const projects: Project[] = [
   },
   {
     id: "peintre",
-    title: "Hervé Petit, peintre",
+    title: "Hervé Petit",
     description: "Description courte du projet — 2 à 3 lignes max.",
     status: "in-progress",
     tier: "main",

@@ -7,12 +7,31 @@ import type { Project } from "../../types/projects";
 
 function ProjectsPage() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const mainProjects = projectsData.filter((p) => p.tier === "main");
+  const secondaryProjects = projectsData.filter((p) => p.tier === "secondary");
 
   return (
     <section className="projects-page">
       <h1 className="projects-page__title">Mes projets</h1>
-      <div className="projects-page__list">
-        {projectsData.map((project) => (
+      <div className="projects-page__list projects-page__list-main">
+        <h2 className="projects-page__list-title">
+          <span className="pink">{"/*"}</span> Projets globaux{" "}
+          <span className="pink">{"*/"}</span>
+        </h2>
+        {mainProjects.map((project) => (
+          <ProjectCard
+            key={project.id}
+            project={project}
+            onClick={() => setSelectedProject(project)}
+          />
+        ))}
+      </div>
+      <div className="projects-page__list projects-page__list-secondary">
+        <h2 className="projects-page__list-title">
+          <span className="pink">{"/*"}</span> Projets ciblés{" "}
+          <span className="pink">{"*/"}</span>
+        </h2>
+        {secondaryProjects.map((project) => (
           <ProjectCard
             key={project.id}
             project={project}
@@ -31,6 +50,11 @@ function ProjectsPage() {
               {selectedProject.title}
               {" >"}
             </h2>
+            <img
+              src={selectedProject.thumbnail}
+              alt={selectedProject.title}
+              className="projects-page__modal-thumbnail"
+            />
             <p className="projects-page__modal-description">
               {selectedProject.description}
             </p>
@@ -66,6 +90,9 @@ function ProjectsPage() {
                 </a>
               )}
             </div>
+            {/* <img src={selectedProject.screenshots[0]} alt={selectedProject.title} className="projects-page__modal-screenshot" />
+            <img src={selectedProject.screenshots[1]} alt={selectedProject.title} className="projects-page__modal-screenshot" />
+            <img src={selectedProject.screenshots[2]} alt={selectedProject.title} className="projects-page__modal-screenshot" /> */}
           </div>
         )}
       </Modal>

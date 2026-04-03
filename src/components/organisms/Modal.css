@@ -16,30 +16,28 @@
 
   .modal__dialog {
     position: relative;
-    max-width: min(100%, 96vw);
-    max-height: min(100%, 96vh);
+    width: 100%;
+    max-height: 90vh;
     margin: auto;
-  }
+    overflow-y: auto;
+    overflow-x: hidden;
 
-  .modal__close {
-    position: absolute;
-    top: -0.25rem;
-    right: -0.25rem;
-    z-index: 1;
-    width: 2.25rem;
-    height: 2.25rem;
-    padding: 0;
-    border: 1px solid var(--color-two);
-    border-radius: 8px;
-    font-size: 1.5rem;
-    line-height: 1;
-    color: var(--color-two);
-    background: var(--color-one);
-    cursor: pointer;
-  }
-
-  .modal__close:hover {
-    background: rgba(0, 0, 0, 0.8);
+    .modal__close {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      z-index: 1;
+      width: 2.25rem;
+      height: 2.25rem;
+      padding: 0;
+      border: 1px solid var(--color-two);
+      border-radius: 8px;
+      font-size: 1.5rem;
+      line-height: 1;
+      color: var(--color-two);
+      background: var(--color-one);
+      cursor: pointer;
+    }
   }
 
   .modal__body {
