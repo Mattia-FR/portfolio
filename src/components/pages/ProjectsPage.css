@@ -16,7 +16,7 @@
   .projects-page__list {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 3rem;
     max-width: 80cqi;
     margin: 0 auto;
     padding-bottom: 2rem;
@@ -31,10 +31,21 @@
       gap: 1rem;
       background-color: var(--color-one);
       color: var(--color-two);
-      border: 1px solid var(--color-two);
-      border-radius: 8px;
-      padding: 1rem;
       text-align: left;
+
+      .project-card__main {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        background: transparent;
+        border: 1px solid var(--color-two);
+        border-radius: 8px;
+        color: var(--color-two);
+        text-align: left;
+        cursor: pointer;
+        padding: 1.5rem 1rem;
+        width: 100%;
+      }
 
       .project-card__title {
         font-family: var(--font-two);
@@ -45,6 +56,7 @@
       .project-card__thumbnail {
         border: 1px solid var(--color-three);
         border-radius: 8px;
+        width: 100%;
       }
 
       .project-card__description {
@@ -60,27 +72,20 @@
         font-style: italic;
       }
 
-      .project-card__links {
-        display: flex;
-        flex-direction: row;
-        gap: 1rem;
-        justify-content: center;
-        padding: 0.5rem 0;
-
-        a {
-          text-decoration: none;
-          color: var(--color-three);
-          font-family: var(--font-two);
-          border: 1px solid var(--color-three);
-          border-radius: 8px;
-          padding: 0.25rem 0.5rem;
-        }
+      .project-card__link {
+        text-decoration: none;
+        color: var(--color-three);
+        font-family: var(--font-two);
+        border: 1px solid var(--color-three);
+        border-radius: 8px;
+        padding: 0.25rem 0.5rem;
+        align-self: center;
       }
     }
   }
 
   .projects-page__list-main {
-    .ghost-btn {
+    .project-card__gradient-border {
       position: relative;
       background: transparent;
       border: none;
@@ -88,7 +93,7 @@
       cursor: pointer;
     }
 
-    .ghost-btn::before {
+    .project-card__gradient-border::before {
       content: "";
       position: absolute;
       inset: 0;
