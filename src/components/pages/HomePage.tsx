@@ -21,7 +21,11 @@ function HomePage() {
           <span className="pink">{"/>"}</span>
         </p>
         <div className="home-page__links">
-          <Link to="/projects" viewTransition className="home-page__link">
+          <Link
+            to="/projects"
+            viewTransition
+            className="home-page__link ghost-btn"
+          >
             Voir mes projets
           </Link>
           <Link to="/contact" viewTransition className="home-page__link">

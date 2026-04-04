@@ -54,6 +54,43 @@
         padding: 0.5rem 1rem;
       }
 
+      .ghost-btn {
+        position: relative;
+        background: transparent;
+        border: none;
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        color: var(--color-three);
+        font-family: var(--font-two);
+      }
+
+      .ghost-btn::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        padding: 2px;
+        background: linear-gradient(
+          135deg,
+          var(--color-three),
+          var(--color-four)
+        );
+        border-radius: 8px;
+        -webkit-mask:
+          linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        mask:
+          linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+      }
+
+      .ghost-btn:active {
+        transform: scale(0.98);
+      }
+
       .home-page__link:active {
         transform: scale(0.98);
       }

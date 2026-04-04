@@ -80,10 +80,34 @@
   }
 
   .projects-page__list-main {
-    .project-card {
-      border: 1px solid var(--color-two);
-      background-color: var(--color-two);
-      color: var(--color-one);
+    .ghost-btn {
+      position: relative;
+      background: transparent;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .ghost-btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      padding: 2px;
+      background: linear-gradient(135deg, var(--color-three), var(--color-four));
+      border-radius: 8px;
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .ghost-btn:active {
+      transform: scale(0.98);
     }
   }
 

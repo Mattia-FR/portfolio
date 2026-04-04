@@ -11,13 +11,17 @@ function ProjectCard({ project, onClick }: ProjectCardProps) {
   };
 
   return (
-    <button type="button" className="project-card" onClick={onClick}>
+    <button type="button" className="project-card ghost-btn" onClick={onClick}>
       <h2 className="project-card__title">
         {"< "}
         {project.title}
         {" >"}
       </h2>
-      <img src={project.thumbnail} alt={project.title} className="project-card__thumbnail" />
+      <img
+        src={project.thumbnail}
+        alt={project.title}
+        className="project-card__thumbnail"
+      />
       <p className="project-card__description">{project.description}</p>
       <div className="project-card__stack">
         {project.stack.map((technology) => (
