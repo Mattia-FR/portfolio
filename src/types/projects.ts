@@ -21,5 +21,11 @@ export interface Project {
   // Liens
   liveUrl?: string;
   videoUrl?: string; // si pas de démo live
-  githubUrl: string;
+  githubUrl: string[];
+  githubNames?: string[];
+}
+
+export interface ProjectCardProps {
+  project: Project;
+  onClick: () => void;
 }

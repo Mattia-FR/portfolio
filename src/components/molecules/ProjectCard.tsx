@@ -1,9 +1,5 @@
-import type { Project } from "../../types/projects";
-
-type ProjectCardProps = {
-  project: Project;
-  onClick: () => void;
-};
+import github from "../../assets/github-icon.png";
+import type { ProjectCardProps } from "../../types/projects";
 
 function ProjectCard({ project, onClick }: ProjectCardProps) {
   return (
@@ -21,23 +17,22 @@ function ProjectCard({ project, onClick }: ProjectCardProps) {
             className="project-card__thumbnail"
           />
           <p className="project-card__description">{project.description}</p>
-          <div className="project-card__stack">
-            {project.stack.map((technology) => (
-              <span key={technology} className="project-card__tag">
-                {technology}
-              </span>
-            ))}
-          </div>
         </button>
       </div>
-      <a
-        href={project.githubUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="project-card__link"
-      >
-        GitHub
-      </a>
+      <div className="project-card__links">
+        {project.githubUrl.map((url, i) => (
+          <a
+            key={url}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="project-card__link"
+          >
+            <img src={github} alt="GitHub" />
+            <span>{project.githubNames?.[i] || `GitHub ${i + 1}`}</span>
+          </a>
+        ))}
+      </div>
     </article>
   );
 }

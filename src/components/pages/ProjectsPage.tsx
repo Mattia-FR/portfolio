@@ -55,9 +55,6 @@ function ProjectsPage() {
               alt={selectedProject.title}
               className="projects-page__modal-thumbnail"
             />
-            <p className="projects-page__modal-description">
-              {selectedProject.description}
-            </p>
             <ul className="projects-page__modal-highlights">
               {selectedProject.highlights.map((highlight) => (
                 <li key={highlight} className="projects-page__modal-highlight">
@@ -72,27 +69,6 @@ function ProjectsPage() {
                 </li>
               ))}
             </ul>
-            <div className="projects-page__modal-links">
-              <a
-                href={selectedProject.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub
-              </a>
-              {selectedProject.liveUrl && (
-                <a
-                  href={selectedProject.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Live
-                </a>
-              )}
-            </div>
-            {/* <img src={selectedProject.screenshots[0]} alt={selectedProject.title} className="projects-page__modal-screenshot" />
-            <img src={selectedProject.screenshots[1]} alt={selectedProject.title} className="projects-page__modal-screenshot" />
-            <img src={selectedProject.screenshots[2]} alt={selectedProject.title} className="projects-page__modal-screenshot" /> */}
           </div>
         )}
       </Modal>

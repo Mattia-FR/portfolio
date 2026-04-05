@@ -1,66 +1,96 @@
-# Portfolio - Mattia Bouvier
+# Portfolio — Mattia Bouvier
 
-Application portfolio personnelle construite avec React, TypeScript et Vite.
-Le projet est en cours de construction et sert de vitrine pour mon profil, mes projets et mes moyens de contact.
-
-## Objectif du projet
-
-Ce portfolio a pour but de présenter :
-- mon profil de developpeur web en reconversion ;
-- mes projets realises ou en cours ;
-- une facon simple de me contacter.
+Application web de portfolio personnelle : présentation, liste de projets avec fiche détaillée en modal, et page de contact avec liens professionnels.
 
 ## Stack technique
 
-- `React 19`
-- `TypeScript`
-- `Vite`
-- `React Router`
-- `Biome` (lint + format)
+- **React 19** + **TypeScript**
+- **Vite 7**
+- **React Router** (routes imbriquées, `createBrowserRouter`)
+- **Lucide React** (icônes du sélecteur de thème)
+- **Biome** — lint et format sur `src/`
 
-## Fonctionnalites actuelles
+## Fonctionnalités
 
-- Layout global avec `Header`, zone principale (`Outlet`) et `Footer`
-- Navigation via une `Navbar`
-- Routage client avec 3 pages :
-  - `/` : accueil (presentation)
-  - `/projects` : projets (placeholder pour le moment)
-  - `/contact` : contact (placeholder pour le moment)
+### Pages et navigation
+
+- **`/`** — Accueil : titre, accroche stack, texte de présentation, liens vers Projets et Contact (avec `viewTransition` sur le lien « Voir mes projets »).
+- **`/projects`** — Projets : cartes regroupées en **projets globaux** (`tier: "main"`) et **projets ciblés** (`tier: "secondary"`). Clic sur une carte ouvre une **modal** (description, points forts, stack, liens GitHub / démo si présente).
+- **`/contact`** — Contact : message court et liens **GitHub** et **LinkedIn** (icônes importées depuis `src/assets`).
+
+### Layout et UX
+
+- **Header** : barre de navigation + bascule **clair / sombre** (`useTheme` : `data-theme` sur `<html>`, persistance `localStorage`, défaut selon `prefers-color-scheme`).
+- **Header masquable au scroll** (`useNavbar`) : se cache en descendant, réapparaît en remontant ou près du haut de page.
+- **Footer** : texte léger + lien vers le [dépôt du portfolio](https://github.com/Mattia-FR/portfolio).
+- **Modal** accessible : piège du focus, **Échap** pour fermer, fond cliquable pour fermer.
+
+### Données projets
+
+- Fichier **`src/data/projects.ts`** : tableau typé `Project` (`src/types/projects.ts`).
+- Champs utiles : `tier` (main / secondary), `stack`, `highlights`, `thumbnail`, `githubUrl`, `liveUrl` optionnel, etc.
+- Les vignettes pointent vers des chemins **`public`** du type `/images/<projet>/thumbnail.png` (à placer dans `public/images/...` côté Vite).
 
 ## Démarrage local
+
+À exécuter depuis ce dossier `Front` :
 
 ```bash
 npm install
 npm run dev
 ```
 
-Puis ouvrir l'URL affichee dans le terminal (par defaut : `http://localhost:5173`).
+Ouvrir l’URL indiquée dans le terminal (souvent `http://localhost:5173`).
 
-## Scripts disponibles
+## Scripts npm
 
-```bash
-npm run dev      # Lance le serveur de developpement
-npm run build    # Build de production (TypeScript + Vite)
-npm run preview  # Lance une preview du build
-npm run check    # Verification du code avec Biome (lecture seule)
-npm run format   # Formatage automatique des fichiers dans src
-npm run lint     # Verification + corrections automatiques dans src
-```
+| Script        | Rôle |
+|---------------|------|
+| `npm run dev` | Serveur de développement Vite |
+| `npm run build` | Vérification TypeScript + build de production |
+| `npm run preview` | Prévisualisation du build |
+| `npm run check` | `biome check src` (lecture seule) |
+| `npm run format` | Formatage Biome sur `./src` |
+| `npm run lint` | Biome avec corrections automatiques sur `./src` |
 
-## Structure actuelle (simplifiee)
+## Structure du code (aperçu)
 
 ```text
-src/
-├── main.tsx
-├── App.tsx
-└── components/
-    ├── molecules/
-    │   └── Navbar.tsx
-    ├── organisms/
-    │   ├── Header.tsx
-    │   └── Footer.tsx
-    └── pages/
-        ├── HomePage.tsx
-        ├── ProjectsPage.tsx
-        └── ContactPage.tsx
+Front/
+├── index.html
+├── vite.config.ts
+├── biome.json
+├── tsconfig*.json
+└── src/
+    ├── main.tsx              # Router + routes
+    ├── App.tsx               # Layout : Header, <Outlet />, Footer
+    ├── index.css             # Variables CSS, thèmes, typo (Google Fonts)
+    ├── vite-env.d.ts
+    ├── assets/               # Icônes contact (GitHub, LinkedIn), etc.
+    ├── data/
+    │   └── projects.ts       # Liste des projets affichés
+    ├── types/
+    │   └── projects.ts       # Interface Project
+    ├── hooks/
+    │   ├── useTheme.ts
+    │   └── useNavbar.ts
+    └── components/
+        ├── molecules/
+        │   ├── Navbar.tsx
+        │   └── ProjectCard.tsx
+        ├── organisms/
+        │   ├── Header.tsx
+        │   ├── Footer.tsx
+        │   └── Modal.tsx
+        └── pages/
+            ├── HomePage.tsx
+            ├── ProjectsPage.tsx
+            └── ContactPage.tsx
 ```
+
+Les styles sont en **CSS par composant / page** (fichiers `*.css` à côté des composants concernés).
+
+## Configuration
+
+- **Biome** : `biome.json` à la racine de `Front`.
+- **Thème** : couleurs et polices définies dans `src/index.css` ; le thème actif est `data-theme="dark"` ou `"light"` sur l’élément racine du document.
