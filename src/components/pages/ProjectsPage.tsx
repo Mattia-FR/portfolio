@@ -18,26 +18,30 @@ function ProjectsPage() {
           <span className="pink">{"/*"}</span> Projets globaux{" "}
           <span className="pink">{"*/"}</span>
         </h2>
-        {mainProjects.map((project) => (
-          <ProjectCard
-            key={project.id}
-            project={project}
-            onClick={() => setSelectedProject(project)}
-          />
-        ))}
+        <div className="projects-page__list-cards">
+          {mainProjects.map((project) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              onClick={() => setSelectedProject(project)}
+            />
+          ))}
+        </div>
       </div>
       <div className="projects-page__list projects-page__list-secondary">
         <h2 className="projects-page__list-title">
           <span className="pink">{"/*"}</span> Projets ciblés{" "}
           <span className="pink">{"*/"}</span>
         </h2>
-        {secondaryProjects.map((project) => (
-          <ProjectCard
-            key={project.id}
-            project={project}
-            onClick={() => setSelectedProject(project)}
-          />
-        ))}
+        <div className="projects-page__list-cards">
+          {secondaryProjects.map((project) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              onClick={() => setSelectedProject(project)}
+            />
+          ))}
+        </div>
       </div>
       <Modal
         isOpen={selectedProject !== null}

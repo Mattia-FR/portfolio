@@ -5,7 +5,7 @@ const projects: Project[] = [
     id: "sariblog",
     title: "Sariblog",
     description:
-      "CMS blog/portfolio fullstack en TypeScript pour ma sœur illustratrice : SPA React (Vite) avec espace d’administration, reliée à une API REST Node.js/Express et une base MySQL. Authentification JWT (access token + refresh en cookie HttpOnly), rôles admin/éditeur et modération du contenu exposé au public.",
+      "CMS blog/portfolio fullstack en TypeScript pour une illustratrice : SPA React (Vite) avec espace d’administration, reliée à une API REST Node.js/Express et une base MySQL. Authentification JWT (access token + refresh en cookie HttpOnly), rôles admin/éditeur et modération du contenu exposé au public.",
     status: "in-progress",
     tier: "main",
     type: "solo",
