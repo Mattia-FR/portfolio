@@ -1,4 +1,66 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
   margin: 0;
-  font-family: system-ui, sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+:root {
+  --color-one: #171b20;
+  --color-two: #fffdf0;
+  --color-three: #ff6c70;
+  --color-four: #66ade8;
+
+  --font-one: "Work Sans", sans-serif;
+  --font-two: "JetBrains Mono", monospace;
+
+  --z-noise: 0;
+  --z-base: 1;
+  --z-header: 100;
+  --z-modal: 200;
+}
+
+:root[data-theme="light"] {
+  --color-one: #fffdf0;
+  --color-two: #171b20;
+  --color-three: #ff6c70;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-one);
+  font-family: var(--font-one);
+  color: var(--color-two);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: var(--z-noise);
+  opacity: 0.6;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  outline: inherit;
 }

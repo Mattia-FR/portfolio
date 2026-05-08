@@ -1,0 +1,28 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0.5rem;
+  border-top: 1px solid var(--color-two);
+
+  .footer__text {
+    font-family: var(--font-two);
+    font-size: 0.8rem;
+    font-style: italic;
+  }
+
+  .footer__link {
+    text-decoration: none;
+    font-family: var(--font-two);
+    font-size: 0.8rem;
+    color: var(--color-three);
+    transition: text-shadow 0.3s ease;
+  }
+
+  .footer__link:hover {
+    text-shadow:
+      0 0 4px var(--color-three),
+      0 0 12px var(--color-three);
+  }
+}

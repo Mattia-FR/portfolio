@@ -1,82 +1,96 @@
-# Template React + TypeScript + Vite + Biome
+# Portfolio — Mattia Bouvier
 
-Un template personnel minimaliste pour démarrer rapidement des projets React avec une configuration propre et moderne.
+Application web de portfolio personnelle : présentation, liste de projets avec fiche détaillée en modal, et page de contact avec liens professionnels.
 
-## 🚀 Démarrage rapide
+## Stack technique
+
+- **React 19** + **TypeScript**
+- **Vite 7**
+- **React Router** (routes imbriquées, `createBrowserRouter`)
+- **Lucide React** (icônes du sélecteur de thème)
+- **Biome** — lint et format sur `src/`
+
+## Fonctionnalités
+
+### Pages et navigation
+
+- **`/`** — Accueil : titre, accroche stack, texte de présentation, liens vers Projets et Contact (avec `viewTransition` sur le lien « Voir mes projets »).
+- **`/projects`** — Projets : cartes regroupées en **projets globaux** (`tier: "main"`) et **projets ciblés** (`tier: "secondary"`). Clic sur une carte ouvre une **modal** (description, points forts, stack, liens GitHub / démo si présente).
+- **`/contact`** — Contact : message court et liens **GitHub** et **LinkedIn** (icônes importées depuis `src/assets`).
+
+### Layout et UX
+
+- **Header** : barre de navigation + bascule **clair / sombre** (`useTheme` : `data-theme` sur `<html>`, persistance `localStorage`, défaut selon `prefers-color-scheme`).
+- **Header masquable au scroll** (`useNavbar`) : se cache en descendant, réapparaît en remontant ou près du haut de page.
+- **Footer** : texte léger + lien vers le [dépôt du portfolio](https://github.com/Mattia-FR/portfolio).
+- **Modal** accessible : piège du focus, **Échap** pour fermer, fond cliquable pour fermer.
+
+### Données projets
+
+- Fichier **`src/data/projects.ts`** : tableau typé `Project` (`src/types/projects.ts`).
+- Champs utiles : `tier` (main / secondary), `stack`, `highlights`, `thumbnail`, `githubUrl`, `liveUrl` optionnel, etc.
+- Les vignettes pointent vers des chemins **`public`** du type `/images/<projet>/thumbnail.png` (à placer dans `public/images/...` côté Vite).
+
+## Démarrage local
+
+À exécuter depuis ce dossier `Front` :
 
 ```bash
-# Cloner le template
-git clone https://github.com/Mattia-FR/template nom-du-projet
-cd nom-du-projet
-
-# Nettoyer l'historique git et réinitialiser
-rm -rf .git
-git init
-
-# Mettre à jour le nom du projet
-npm pkg set name="nom-du-projet"
-
-# Installer les dépendances
 npm install
-
-# Lancer le serveur de développement
 npm run dev
 ```
 
-## 🛠️ Stack technique
+Ouvrir l’URL indiquée dans le terminal (souvent `http://localhost:5173`).
 
-- **React** - Bibliothèque UI
-- **TypeScript** - Typage statique
-- **Vite** - Build tool et dev server
-- **Biome** - Linter et formatter (remplace ESLint + Prettier)
+## Scripts npm
 
-## 📝 Scripts disponibles
+| Script        | Rôle |
+|---------------|------|
+| `npm run dev` | Serveur de développement Vite |
+| `npm run build` | Vérification TypeScript + build de production |
+| `npm run preview` | Prévisualisation du build |
+| `npm run check` | `biome check src` (lecture seule) |
+| `npm run format` | Formatage Biome sur `./src` |
+| `npm run lint` | Biome avec corrections automatiques sur `./src` |
 
-```bash
-npm run dev      # Serveur de développement
-npm run build    # Build de production
-npm run preview  # Preview du build
-npm run check    # Vérification du code (lecture seule)
-npm run format   # Formatage automatique
-npm run lint     # Linting + formatage + corrections
+## Structure du code (aperçu)
+
+```text
+Front/
+├── index.html
+├── vite.config.ts
+├── biome.json
+├── tsconfig*.json
+└── src/
+    ├── main.tsx              # Router + routes
+    ├── App.tsx               # Layout : Header, <Outlet />, Footer
+    ├── index.css             # Variables CSS, thèmes, typo (Google Fonts)
+    ├── vite-env.d.ts
+    ├── assets/               # Icônes contact (GitHub, LinkedIn), etc.
+    ├── data/
+    │   └── projects.ts       # Liste des projets affichés
+    ├── types/
+    │   └── projects.ts       # Interface Project
+    ├── hooks/
+    │   ├── useTheme.ts
+    │   └── useNavbar.ts
+    └── components/
+        ├── molecules/
+        │   ├── Navbar.tsx
+        │   └── ProjectCard.tsx
+        ├── organisms/
+        │   ├── Header.tsx
+        │   ├── Footer.tsx
+        │   └── Modal.tsx
+        └── pages/
+            ├── HomePage.tsx
+            ├── ProjectsPage.tsx
+            └── ContactPage.tsx
 ```
 
-## 📁 Structure du projet
+Les styles sont en **CSS par composant / page** (fichiers `*.css` à côté des composants concernés).
 
-```
-src/
-├── App.tsx      # Composant principal (minimaliste)
-├── App.css      # Styles du composant App
-├── main.tsx     # Point d'entrée avec gestion d'erreur
-└── index.css    # Reset CSS minimal
-```
+## Configuration
 
-## ⚙️ Configuration
-
-### Biome
-Configuration dans `biome.json` :
-- Formatage avec espaces et guillemets doubles
-- Règles recommandées activées
-- Organisation automatique des imports
-
-### TypeScript
-Configuration standard avec `tsconfig.json` pour Vite.
-
-## 🎯 Philosophie du template
-
-- **Minimaliste** - Juste l'essentiel pour commencer
-- **Moderne** - Outils récents et bonnes pratiques
-- **Propre** - Pas de CSS de démo, structure claire
-- **Évolutif** - Base solide pour grandir
-
-## 📚 Prochaines étapes suggérées
-
-Selon vos besoins, vous pouvez ajouter :
-- **State management** - Zustand, Redux Toolkit
-- **UI Library** - Tailwind CSS, Material-UI
-- **Testing** - Vitest, React Testing Library
-- **API calls** - Axios, React Query
-
----
-
-*Template créé pour mes projets personnels - Libre d'utilisation si ça peut servir !*
+- **Biome** : `biome.json` à la racine de `Front`.
+- **Thème** : couleurs et polices définies dans `src/index.css` ; le thème actif est `data-theme="dark"` ou `"light"` sur l’élément racine du document.

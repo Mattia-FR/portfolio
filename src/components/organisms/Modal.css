@@ -1,0 +1,72 @@
+.modal__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  /* Reset button */
+  border: none;
+  cursor: default;
+  width: 100%;
+
+  .modal__dialog {
+    position: relative;
+    width: 100%;
+    max-height: 90vh;
+    margin: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .modal__close {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      z-index: 1;
+      width: 2.25rem;
+      height: 2.25rem;
+      padding: 0;
+      border: 1px solid var(--color-two);
+      border-radius: 8px;
+      font-size: 1.5rem;
+      line-height: 1;
+      color: var(--color-two);
+      background: var(--color-one);
+      cursor: pointer;
+    }
+  }
+
+  .modal__body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: min(92vh, 100%);
+  }
+
+  .modal__image {
+    max-width: 100%;
+    max-height: min(90vh, 92vh);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 4px;
+    vertical-align: middle;
+  }
+}
+
+@media (min-width: 768px) {
+  .modal__backdrop {
+    padding-left: 200px;
+    .modal__dialog {
+      .modal__close {
+        position: relative;
+        right: -75%;
+        top: 3rem;
+      }
+    }
+  }
+}
