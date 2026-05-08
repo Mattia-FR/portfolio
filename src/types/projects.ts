@@ -16,7 +16,7 @@ export interface Project {
 
   // Médias
   thumbnail: string; // image principale
-  screenshots: string[]; // 2-4 max
+  screenshots?: string[]; // 2-4 max
 
   // Liens
   liveUrl?: string;

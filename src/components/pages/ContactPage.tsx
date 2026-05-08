@@ -14,15 +14,6 @@ function ContactPage() {
         </p>
         <div className="contact-page__links">
           <a
-            href="https://github.com/Mattia-FR"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="contact-page__link"
-          >
-            <img src={github} alt="GitHub" />
-            <span>GitHub</span>
-          </a>
-          <a
             href="https://linkedin.com/in/mattia-bouvier"
             target="_blank"
             rel="noopener noreferrer"
@@ -30,6 +21,15 @@ function ContactPage() {
           >
             <img src={linkedin} alt="LinkedIn" />
             <span>LinkedIn</span>
+          </a>
+          <a
+            href="https://github.com/Mattia-FR"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contact-page__link"
+          >
+            <img src={github} alt="GitHub" />
+            <span>GitHub</span>
           </a>
         </div>
       </div>

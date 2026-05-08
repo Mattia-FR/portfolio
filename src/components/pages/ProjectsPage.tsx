@@ -54,6 +54,7 @@ function ProjectsPage() {
               {selectedProject.title}
               {" >"}
             </h2>
+            {/* <div> */}
             <img
               src={selectedProject.thumbnail}
               alt={selectedProject.title}
@@ -74,6 +75,7 @@ function ProjectsPage() {
               ))}
             </ul>
           </div>
+          // </div>
         )}
       </Modal>
     </section>

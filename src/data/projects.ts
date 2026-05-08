@@ -31,11 +31,6 @@ const projects: Project[] = [
       "CRUD et flux complets pour articles, images, tags, catégories, commentaires et messages de contact, avec uploads gérés côté serveur (Multer).",
     ],
     thumbnail: "/images/sariblog/thumbnail.png",
-    screenshots: [
-      "/images/sariblog/screenshot-1.png",
-      "/images/sariblog/screenshot-2.png",
-      "/images/sariblog/screenshot-3.png",
-    ],
     githubUrl: [
       "https://github.com/Mattia-FR/SariBlogFront",
       "https://github.com/Mattia-FR/SariBlogBack",
@@ -68,10 +63,6 @@ const projects: Project[] = [
       "Intégration paiement Stripe côté client et serveur, uploads (express-fileupload)",
     ],
     thumbnail: "/images/cookies/thumbnail.png",
-    screenshots: [
-      "/images/le-cookie-du-patron/screenshot-1.png",
-      "/images/le-cookie-du-patron/screenshot-2.png",
-    ],
     githubUrl: [
       "https://github.com/WildCodeSchool/nov24-RemFR-Vert-FullStackAlchemist-G2-P3",
     ],
@@ -101,10 +92,6 @@ const projects: Project[] = [
       "Front : React 19, chargement des routes, TanStack Query, contenu riche sécurisé (DOMPurify), galerie type masonry",
     ],
     thumbnail: "/images/peintre/thumbnail.png",
-    screenshots: [
-      "/images/peintre/screenshot-1.png",
-      "/images/peintre/screenshot-2.png",
-    ],
     githubUrl: ["https://github.com/placeholder"],
   },
   {
@@ -148,10 +135,6 @@ const projects: Project[] = [
       "Architecture UI en atomic design (atoms / molecules / organisms / pages)",
     ],
     thumbnail: "/images/mangatheque/thumbnail.png",
-    screenshots: [
-      "/images/mangatheque/screenshot-1.png",
-      "/images/mangatheque/screenshot-2.png",
-    ],
     githubUrl: ["https://github.com/placeholder"],
   },
   {
@@ -178,12 +161,9 @@ const projects: Project[] = [
       "État centralisé (reducer) + paramètres (décroissance, cooldowns, anti-spam) dans `app/utils/core/config.ts`",
       "Persistance avec AsyncStorage, rappels via expo-notifications, UI Paper et animation du pet en Lottie",
     ],
-    thumbnail: "/images/tamagotchi/thumbnail.png",
-    screenshots: [
-      "/images/tamagotchi/screenshot-1.png",
-      "/images/tamagotchi/screenshot-2.png",
-    ],
+    thumbnail: "/images/tamagucci/thumbnail.png",
     githubUrl: ["https://github.com/Mattia-FR/TamaGucci"],
+    githubNames: ["Dépôt"],
   },
 ];
 

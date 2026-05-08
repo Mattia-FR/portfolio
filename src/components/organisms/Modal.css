@@ -57,3 +57,16 @@
     vertical-align: middle;
   }
 }
+
+@media (min-width: 768px) {
+  .modal__backdrop {
+    padding-left: 200px;
+    .modal__dialog {
+      .modal__close {
+        position: relative;
+        right: -75%;
+        top: 3rem;
+      }
+    }
+  }
+}

@@ -28,7 +28,7 @@ function HomePage() {
           >
             Voir mes projets
           </Link>
-          <Link to="/contact" viewTransition className="home-page__link">
+          <Link to="/contact" viewTransition className="home-page__link cta">
             Me contacter
           </Link>
         </div>

@@ -14,7 +14,7 @@
     padding: 1rem;
 
     .home-page__title {
-      font-size: 3rem;
+      font-size: clamp(3rem, 2.2rem + 2.5vw, 5rem);
       letter-spacing: 0.2rem;
       max-width: 50cqi;
     }
@@ -51,11 +51,12 @@
         border-radius: 8px;
         width: fit-content;
         padding: 0.5rem 1rem;
+        background-color: var(--color-one);
+        z-index: 1;
       }
 
       .ghost-btn {
         position: relative;
-        background: transparent;
         border: none;
         border-radius: 8px;
         padding: 0.5rem 1rem;
@@ -68,7 +69,7 @@
         content: "";
         position: absolute;
         inset: 0;
-        padding: 2px;
+        padding: 1px;
         background: linear-gradient(
           135deg,
           var(--color-three),
@@ -97,6 +98,8 @@
   }
 }
 
+/* Version desktop */
+
 @media (min-width: 768px) {
   .home-page {
     width: clamp(200px, 70vw, 1200px);
@@ -118,10 +121,44 @@
 
         .home-page__link {
           padding: 1.5rem 3rem;
+          transition: all 0.3s ease;
+        }
+
+        .cta {
+          background: linear-gradient(
+            to right,
+            transparent 50%,
+            var(--color-three) 50%
+          );
+          background-size: 200% 100%;
+          background-position: left;
+          transition:
+            background-position 0.3s ease,
+            color 0.3s ease,
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
         }
 
         .ghost-btn::before {
-          padding: 4px;
+          padding: 3px;
+        }
+
+        .ghost-btn:hover:before {
+          background: linear-gradient(
+            135deg,
+            var(--color-four),
+            var(--color-three)
+          );
+        }
+
+        .ghost-btn:hover {
+          transform: scale(1.05);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+        }
+
+        .cta:hover {
+          background-position: right;
+          color: white;
         }
       }
     }
